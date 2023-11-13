@@ -1,8 +1,8 @@
 package domain.discount;
 
+import constant.DayOfTheWeek;
 import domain.Order;
 import java.util.List;
-import org.mockito.internal.matchers.Or;
 
 public class OrderInformation {
     private final int date;
@@ -15,6 +15,10 @@ public class OrderInformation {
     
     public int getDate() {
         return date;
+    }
+    
+    public DayOfTheWeek dayOfTheWeek() {
+        return DayOfTheWeek.of(date);
     }
     
     public int dessertMenuCount() {
