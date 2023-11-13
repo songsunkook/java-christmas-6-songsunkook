@@ -1,9 +1,9 @@
 package constant;
 
 public enum Drink implements Menu {
-    ZERO_COLA(3000),
-    RED_WINE(60000),
-    CHAMPAGNE(25000),
+    ZERO_COLA(3_000),
+    RED_WINE(60_000),
+    CHAMPAGNE(25_000),
     ;
     
     private final int price;

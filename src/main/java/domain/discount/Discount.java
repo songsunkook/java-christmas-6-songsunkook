@@ -10,7 +10,7 @@ public abstract class Discount {
     abstract int discountAmount();
     
     protected boolean isDiscountable() {
-        if (orderInformation.getOrderPrice() < 10000) {
+        if (orderInformation.getOrderPrice() < 10_000) {
             return false;
         }
         if (orderInformation.getDrinkMenuCount() == orderInformation.getAllMenuCount()) {
