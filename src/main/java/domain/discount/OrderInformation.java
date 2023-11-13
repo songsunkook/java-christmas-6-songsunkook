@@ -1,6 +1,7 @@
 package domain.discount;
 
 import constant.DayOfTheWeek;
+import constant.MenuType;
 import domain.Order;
 import java.util.List;
 
@@ -21,11 +22,30 @@ public class OrderInformation {
         return DayOfTheWeek.of(date);
     }
     
-    public int dessertMenuCount() {
-        return 0;
+    public int getAppetizerMenuCount() {
+        return getMenuCount(MenuType.APPETIZER);
     }
     
-    public int mainMenuCount() {
+    public int getMainMenuCount() {
+        return getMenuCount(MenuType.MAIN);
+    }
+    
+    public int getDessertMenuCount() {
+        return getMenuCount(MenuType.DESSERT);
+    }
+    
+    public int getDrinkMenuCount() {
+        return getMenuCount(MenuType.DRINK);
+    }
+    
+    private int getMenuCount(MenuType menuType) {
+        return orders.stream()
+                .filter(order -> order.getMenuType() == menuType)
+                .mapToInt(Order::getOrderQuantity)
+                .sum();
+    }
+    
+    public int getOrderPrice() {
         return 0;
     }
 }
