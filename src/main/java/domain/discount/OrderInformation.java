@@ -22,6 +22,12 @@ public class OrderInformation {
         return DayOfTheWeek.of(date);
     }
     
+    public int getAllMenuCount() {
+        return orders.stream()
+                .mapToInt(Order::getOrderQuantity)
+                .sum();
+    }
+    
     public int getAppetizerMenuCount() {
         return getMenuCount(MenuType.APPETIZER);
     }
@@ -46,6 +52,8 @@ public class OrderInformation {
     }
     
     public int getOrderPrice() {
-        return 0;
+        return orders.stream()
+                .mapToInt(Order::getOrderPrice)
+                .sum();
     }
 }

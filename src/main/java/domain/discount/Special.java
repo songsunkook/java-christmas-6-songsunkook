@@ -1,14 +1,16 @@
 package domain.discount;
 
-public class Special implements Discountable {
-    private final OrderInformation orderInformation;
-    
+public class Special extends Discount {
+
     public Special(OrderInformation orderInformation) {
-        this.orderInformation = orderInformation;
+        super(orderInformation);
     }
     
     @Override
-    public int discountAmount() {
+    protected int discountAmount() {
+        if (isDiscountable()) {
+            return 0;
+        }
         return 0;
     }
 }

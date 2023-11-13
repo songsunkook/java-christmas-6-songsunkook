@@ -2,17 +2,24 @@ package domain.discount;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import constant.Appetizer;
+import domain.Order;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ChristmasTest {
     
     @Test
-    public void 할인이_정상적으로_적용되는가() {
+    public void 크리스마스_할인이_정상적으로_적용되는가() {
         //given
-        Discountable christmasDay1 = new Christmas(new OrderInformation(1, null));
-        Discountable christmasDay2 = new Christmas(new OrderInformation(20, null));
-        Discountable christmasDay3 = new Christmas(new OrderInformation(25, null));
-        Discountable christmasDay4 = new Christmas(new OrderInformation(26, null));
+        Discount christmasDay1 = new Christmas(new OrderInformation(1,
+                List.of(new Order(Appetizer.CAESAR_SALAD, 10))));
+        Discount christmasDay2 = new Christmas(new OrderInformation(20,
+                List.of(new Order(Appetizer.CAESAR_SALAD, 10))));
+        Discount christmasDay3 = new Christmas(new OrderInformation(25,
+                List.of(new Order(Appetizer.CAESAR_SALAD, 10))));
+        Discount christmasDay4 = new Christmas(new OrderInformation(26,
+                List.of(new Order(Appetizer.CAESAR_SALAD, 10))));
         
         //then
         assertEquals(1000, christmasDay1.discountAmount());

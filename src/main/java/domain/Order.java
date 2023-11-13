@@ -20,4 +20,8 @@ public class Order {
     public int getOrderQuantity() {
         return orderQuantity;
     }
+    
+    public int getOrderPrice() {
+        return menu.getPrice() * orderQuantity;
+    }
 }
