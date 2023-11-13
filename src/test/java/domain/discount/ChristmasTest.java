@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class DiscountableTest {
+class ChristmasTest {
     
     @Test
     public void 할인이_정상적으로_적용되는가() {
