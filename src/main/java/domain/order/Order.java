@@ -1,8 +1,8 @@
-package domain;
+package domain.order;
 
 
-import constant.Menu;
-import constant.MenuType;
+import constant.menu.Menu;
+import constant.menu.MenuType;
 
 public class Order {
     private final Menu menu;

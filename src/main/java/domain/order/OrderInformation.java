@@ -1,8 +1,7 @@
-package domain.discount;
+package domain.order;
 
 import constant.DayOfTheWeek;
-import constant.MenuType;
-import domain.Order;
+import constant.menu.MenuType;
 import java.util.List;
 
 public class OrderInformation {

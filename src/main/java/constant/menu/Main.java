@@ -1,4 +1,4 @@
-package constant;
+package constant.menu;
 
 public enum Main implements Menu {
     T_BONE_STEAK(55000),

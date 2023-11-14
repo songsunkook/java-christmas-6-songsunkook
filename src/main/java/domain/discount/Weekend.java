@@ -1,6 +1,7 @@
 package domain.discount;
 
 import constant.DayOfTheWeek;
+import domain.order.OrderInformation;
 import java.util.List;
 
 public class Weekend extends Discount {

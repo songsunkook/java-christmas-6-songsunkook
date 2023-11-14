@@ -1,14 +1,14 @@
-package constant;
+package constant.menu;
 
-public enum Drink implements Menu {
-    ZERO_COLA(3_000),
-    RED_WINE(60_000),
-    CHAMPAGNE(25_000),
+public enum Appetizer implements Menu {
+    BUTTON_MUSHROOM_SOUP(6000),
+    TAPAS(5500),
+    CAESAR_SALAD(8000),
     ;
     
     private final int price;
     
-    Drink(int price) {
+    Appetizer(int price) {
         this.price = price;
     }
     
@@ -19,6 +19,6 @@ public enum Drink implements Menu {
     
     @Override
     public MenuType getType() {
-        return MenuType.DRINK;
+        return MenuType.APPETIZER;
     }
 }

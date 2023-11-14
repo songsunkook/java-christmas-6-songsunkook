@@ -1,7 +1,7 @@
 package mapper;
 
 import constant.Badge;
-import domain.Order;
+import domain.order.Order;
 import java.util.List;
 import mapper.dto.BenefitDto;
 import service.ChristmasService;

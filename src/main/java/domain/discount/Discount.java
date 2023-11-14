@@ -1,5 +1,7 @@
 package domain.discount;
 
+import domain.order.OrderInformation;
+
 public abstract class Discount {
     protected final OrderInformation orderInformation;
     

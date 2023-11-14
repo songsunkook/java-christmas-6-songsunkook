@@ -2,7 +2,7 @@ package domain.giveaway;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import constant.Drink;
+import constant.menu.Drink;
 import org.junit.jupiter.api.Test;
 
 class GiveawayTest {

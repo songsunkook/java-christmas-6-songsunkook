@@ -1,5 +1,6 @@
 package domain.discount;
 
+import domain.order.OrderInformation;
 import java.util.List;
 
 public class Special extends Discount {

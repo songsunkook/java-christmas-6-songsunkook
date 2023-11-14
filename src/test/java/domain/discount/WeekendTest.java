@@ -2,11 +2,12 @@ package domain.discount;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import constant.Appetizer;
-import constant.Dessert;
-import constant.Drink;
-import constant.Main;
-import domain.Order;
+import constant.menu.Appetizer;
+import constant.menu.Dessert;
+import constant.menu.Drink;
+import constant.menu.Main;
+import domain.order.Order;
+import domain.order.OrderInformation;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,7 @@
 package domain.discount;
 
+import domain.order.OrderInformation;
+
 public class Christmas extends Discount {
     
     private static final int CHRISTMAS_DATE = 25;

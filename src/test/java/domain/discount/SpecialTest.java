@@ -2,8 +2,9 @@ package domain.discount;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import constant.Appetizer;
-import domain.Order;
+import constant.menu.Appetizer;
+import domain.order.Order;
+import domain.order.OrderInformation;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 

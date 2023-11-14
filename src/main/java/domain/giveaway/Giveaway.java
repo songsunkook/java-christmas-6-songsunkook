@@ -1,7 +1,7 @@
 package domain.giveaway;
 
-import constant.Drink;
-import constant.Menu;
+import constant.menu.Drink;
+import constant.menu.Menu;
 
 public class Giveaway {
     private static final Menu GIVEAWAY_PRIZE = Drink.CHAMPAGNE;
