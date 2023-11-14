@@ -1,13 +1,13 @@
 package domain.discount;
 
-import domain.order.OrderInformation;
+import domain.order.Orders;
 import java.util.List;
 
 public class Special extends Discount {
     private static final List<Integer> STAR_DAY = List.of(3, 10, 17, 24, 25, 31);
 
-    public Special(OrderInformation orderInformation) {
-        super(orderInformation);
+    public Special(Orders orders) {
+        super(orders);
     }
     
     @Override
@@ -20,7 +20,7 @@ public class Special extends Discount {
     
     @Override
     protected boolean isDiscountable() {
-        if (STAR_DAY.contains(orderInformation.getDate())) {
+        if (STAR_DAY.contains(orders.getDate())) {
             return super.isDiscountable();
         }
         return false;

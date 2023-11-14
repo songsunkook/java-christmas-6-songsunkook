@@ -6,22 +6,26 @@ import constant.menu.MenuType;
 
 public class Order {
     private final Menu menu;
-    private final int orderQuantity;
+    private final int count;
     
-    public Order(Menu menu, int orderQuantity) {
+    public Order(Menu menu, int count) {
         this.menu = menu;
-        this.orderQuantity = orderQuantity;
+        this.count = count;
     }
     
     public MenuType getMenuType() {
         return menu.getType();
     }
     
-    public int getOrderQuantity() {
-        return orderQuantity;
+    public int getOrderPrice() {
+        return menu.getPrice() * count;
     }
     
-    public int getOrderPrice() {
-        return menu.getPrice() * orderQuantity;
+    public Menu getMenu() {
+        return menu;
+    }
+    
+    public int getCount() {
+        return count;
     }
 }

@@ -1,7 +1,7 @@
 package domain.discount;
 
 import constant.DayOfTheWeek;
-import domain.order.OrderInformation;
+import domain.order.Orders;
 import java.util.List;
 
 public class Weekday extends Discount {
@@ -15,27 +15,27 @@ public class Weekday extends Discount {
                     DayOfTheWeek.THURSDAY
             );
     
-    public Weekday(OrderInformation orderInformation) {
-        super(orderInformation);
+    public Weekday(Orders orders) {
+        super(orders);
     }
     
     @Override
     public int discountAmount() {
         if (isDiscountable()) {
-            return orderInformation.getDessertMenuCount() * DISCOUNT_AMOUNT;
+            return orders.getDessertMenuCount() * DISCOUNT_AMOUNT;
         }
         return 0;
     }
     
     @Override
     protected boolean isDiscountable() {
-        if (orderInformation.getDessertMenuCount() > 0 && validateDayOfTheWeek()) {
+        if (orders.getDessertMenuCount() > 0 && validateDayOfTheWeek()) {
             return super.isDiscountable();
         }
         return false;
     }
     
     private boolean validateDayOfTheWeek() {
-        return VALID_DAY_OF_THE_WEEK.contains(orderInformation.dayOfTheWeek());
+        return VALID_DAY_OF_THE_WEEK.contains(orders.dayOfTheWeek());
     }
 }

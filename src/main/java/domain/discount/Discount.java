@@ -1,21 +1,21 @@
 package domain.discount;
 
-import domain.order.OrderInformation;
+import domain.order.Orders;
 
 public abstract class Discount {
-    protected final OrderInformation orderInformation;
+    protected final Orders orders;
     
-    Discount(OrderInformation orderInformation) {
-        this.orderInformation = orderInformation;
+    Discount(Orders orders) {
+        this.orders = orders;
     }
     
     abstract int discountAmount();
     
     protected boolean isDiscountable() {
-        if (orderInformation.getOrderPrice() < 10_000) {
+        if (orders.getOrderPrice() < 10_000) {
             return false;
         }
-        if (orderInformation.getDrinkMenuCount() == orderInformation.getAllMenuCount()) {
+        if (orders.getDrinkMenuCount() == orders.getAllMenuCount()) {
             return false;
         }
         return true;

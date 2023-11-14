@@ -4,11 +4,11 @@ import constant.DayOfTheWeek;
 import constant.menu.MenuType;
 import java.util.List;
 
-public class OrderInformation {
-    private final int date;
+public class Orders {
     private final List<Order> orders;
+    private final int date;
     
-    public OrderInformation(int date, List<Order> orders) {
+    public Orders(int date, List<Order> orders) {
         this.date = date;
         this.orders = orders;
     }
@@ -23,7 +23,7 @@ public class OrderInformation {
     
     public int getAllMenuCount() {
         return orders.stream()
-                .mapToInt(Order::getOrderQuantity)
+                .mapToInt(Order::getCount)
                 .sum();
     }
     
@@ -46,7 +46,7 @@ public class OrderInformation {
     private int getMenuCount(MenuType menuType) {
         return orders.stream()
                 .filter(order -> order.getMenuType() == menuType)
-                .mapToInt(Order::getOrderQuantity)
+                .mapToInt(Order::getCount)
                 .sum();
     }
     

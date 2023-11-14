@@ -3,9 +3,8 @@ package domain.discount;
 import static constant.menu.Menu.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import constant.menu.Menu;
 import domain.order.Order;
-import domain.order.OrderInformation;
+import domain.order.Orders;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -14,13 +13,13 @@ class ChristmasTest {
     @Test
     public void 크리스마스_할인이_정상적으로_적용되는가() {
         //given
-        Discount christmasDay1 = new Christmas(new OrderInformation(1,
+        Discount christmasDay1 = new Christmas(new Orders(1,
                 List.of(new Order(CAESAR_SALAD, 10))));
-        Discount christmasDay2 = new Christmas(new OrderInformation(20,
+        Discount christmasDay2 = new Christmas(new Orders(20,
                 List.of(new Order(CAESAR_SALAD, 10))));
-        Discount christmasDay3 = new Christmas(new OrderInformation(25,
+        Discount christmasDay3 = new Christmas(new Orders(25,
                 List.of(new Order(CAESAR_SALAD, 10))));
-        Discount christmasDay4 = new Christmas(new OrderInformation(26,
+        Discount christmasDay4 = new Christmas(new Orders(26,
                 List.of(new Order(CAESAR_SALAD, 10))));
         
         //then

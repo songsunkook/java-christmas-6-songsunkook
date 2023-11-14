@@ -1,7 +1,7 @@
 package domain.discount;
 
 import constant.DayOfTheWeek;
-import domain.order.OrderInformation;
+import domain.order.Orders;
 import java.util.List;
 
 public class Weekend extends Discount {
@@ -12,14 +12,14 @@ public class Weekend extends Discount {
                     DayOfTheWeek.SATURDAY
             );
     
-    public Weekend(OrderInformation orderInformation) {
-        super(orderInformation);
+    public Weekend(Orders orders) {
+        super(orders);
     }
     
     @Override
     public int discountAmount() {
         if (isDiscountable()) {
-            return orderInformation.getMainMenuCount() * DISCOUNT_AMOUNT;
+            return orders.getMainMenuCount() * DISCOUNT_AMOUNT;
         }
         return 0;
     }
@@ -33,6 +33,6 @@ public class Weekend extends Discount {
     }
     
     private boolean validateDayOfTheWeek() {
-        return VALID_DAY_OF_THE_WEEK.contains(orderInformation.dayOfTheWeek());
+        return VALID_DAY_OF_THE_WEEK.contains(orders.dayOfTheWeek());
     }
 }

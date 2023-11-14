@@ -18,7 +18,7 @@ public class OutputView {
     }
     
     public void inputMenuInformation() {
-        System.out.println(INPUT_MENU_INFORMATION.get());
+        System.out.print(INPUT_MENU_INFORMATION.get());
     }
     
     public void previewEventBenefits(int date) {

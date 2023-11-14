@@ -3,9 +3,8 @@ package domain.discount;
 import static constant.menu.Menu.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import constant.menu.Menu;
 import domain.order.Order;
-import domain.order.OrderInformation;
+import domain.order.Orders;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -14,18 +13,18 @@ class WeekendTest {
     @Test
     public void 주말_할인이_정상적으로_적용되는가() {
         //given
-        Discount notWeekend = new Weekend(new OrderInformation(3, List.of(
+        Discount notWeekend = new Weekend(new Orders(3, List.of(
                 new Order(CAESAR_SALAD, 10),
                 new Order(CHRISTMAS_PASTA, 10),
                 new Order(ICE_CREAM, 10),
                 new Order(RED_WINE, 10)
         )));
-        Discount weekend1 = new Weekend(new OrderInformation(1, List.of(
+        Discount weekend1 = new Weekend(new Orders(1, List.of(
                 new Order(CAESAR_SALAD, 1),
                 new Order(ICE_CREAM, 1),
                 new Order(RED_WINE, 1)
         )));
-        Discount weekend2 = new Weekend(new OrderInformation(1, List.of(
+        Discount weekend2 = new Weekend(new Orders(1, List.of(
                 new Order(CAESAR_SALAD, 1),
                 new Order(CHRISTMAS_PASTA, 3),
                 new Order(ICE_CREAM, 1),
