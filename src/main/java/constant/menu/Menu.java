@@ -34,7 +34,7 @@ public enum Menu {
                 return menu;
             }
         }
-        return null;
+        throw new IllegalArgumentException("[ERROR]존재하지 않는 메뉴");
     }
     
     public int getPrice() {

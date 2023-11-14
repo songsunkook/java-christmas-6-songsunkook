@@ -19,7 +19,7 @@ public enum Badge {
                 return values()[i];
             }
         }
-        return null;
+        throw new RuntimeException("[ERROR]불가능한 할인 금액 전달");
     }
     
     public int getRequiredDiscountAmount() {

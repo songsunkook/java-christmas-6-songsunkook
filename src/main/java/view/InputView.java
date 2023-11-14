@@ -48,6 +48,8 @@ public class InputView {
             return logic.get();
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR]숫자가 아닌 입력");
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 }
