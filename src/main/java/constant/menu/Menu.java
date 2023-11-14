@@ -30,7 +30,7 @@ public enum Menu {
     
     public static Menu of(String name) {
         for (Menu menu : values()) {
-            if (menu.name == name) {
+            if (menu.name.equals(name)) {
                 return menu;
             }
         }
