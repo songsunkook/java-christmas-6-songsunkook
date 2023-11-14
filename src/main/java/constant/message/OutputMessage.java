@@ -11,7 +11,7 @@ public enum OutputMessage {
     BENEFIT_DETAILS_HEADER("\n<혜택 내역>\n"),
     TOTAL_BENEFIT_AMOUNT_HEADER("\n<총혜택 금액>\n"),
     AMOUNT_AFTER_DISCOUNT_HEADER("\n<할인 후 예상 결제 금액>\n"),
-    MONTH_EVENT_BADGE_HEADER("\n<%d월 이벤트 배지>\n"),
+    EVENT_BADGE_HEADER("\n<%d월 이벤트 배지>\n"),
     ;
     
     private static final int EVENT_MONTH = 12;

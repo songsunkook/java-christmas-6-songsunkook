@@ -1,14 +1,15 @@
 package view;
 
+import java.util.List;
 import view.dto.OrderDto;
 
 public class InputView {
     
-    public int dateOfVisit() {
+    public int visitDate() {
         return 0;
     }
     
-    public OrderDto orderMenus() {
+    public List<OrderDto> orderMenus() {
         return null;
     }
 }
