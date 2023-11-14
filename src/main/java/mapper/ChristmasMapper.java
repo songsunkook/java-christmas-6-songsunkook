@@ -1,6 +1,7 @@
 package mapper;
 
 import constant.Badge;
+import domain.giveaway.Giveaway;
 import domain.order.Order;
 import java.util.List;
 import mapper.dto.BenefitDto;
@@ -37,7 +38,14 @@ public class ChristmasMapper {
     }
     
     public OrderDto getGiveaway() {
-        return christmasService.getGiveaway();
+        return giveawayToOrderDto(christmasService.getGiveaway());
+    }
+    
+    private OrderDto giveawayToOrderDto(Giveaway giveaway) {
+        if (!giveaway.isHave()) {
+            return null;
+        }
+        return new OrderDto(giveaway.getGivewayPrize(), giveaway.getCount());
     }
     
     public BenefitDto getBenefitDetails() {

@@ -10,7 +10,8 @@ import view.dto.OrderDto;
 
 public class OutputView {
     private static final DecimalFormat formatter = new DecimalFormat("###,###");
-    public static final String KRW = "원";
+    private static final String KRW = "원";
+    private static final String NONE = "없음";
     
     public void startEventPlanner() {
         System.out.print(START_EVENT_PLANNER.get());
@@ -40,6 +41,11 @@ public class OutputView {
     
     public void giveawayMenu(OrderDto giveaway) {
         System.out.print(GIVEAWAY_MENU_HEADER.get());
+        if (giveaway == null) {
+            System.out.println(NONE);
+            return;
+        }
+        System.out.println(giveaway);
     }
     
     public void benefitDetails(BenefitDto benefitDto) {
