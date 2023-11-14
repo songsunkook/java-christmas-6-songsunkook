@@ -13,12 +13,12 @@ class SpecialTest {
     @Test
     public void 특별_할인이_정상적으로_적용되는가() {
         //given
-        Discount notStarDay = new Special(new Orders(4, List.of(
+        Discount notStarDay = new Special(new Orders(List.of(
                 new Order(Menu.CAESAR_SALAD, 10)
-        )));
-        Discount starDay = new Special(new Orders(3, List.of(
+        ), 4));
+        Discount starDay = new Special(new Orders(List.of(
                 new Order(Menu.CAESAR_SALAD, 10)
-        )));
+        ), 3));
         
         //then
         assertEquals(0, notStarDay.discountAmount());

@@ -13,14 +13,14 @@ class ChristmasTest {
     @Test
     public void 크리스마스_할인이_정상적으로_적용되는가() {
         //given
-        Discount christmasDay1 = new Christmas(new Orders(1,
-                List.of(new Order(CAESAR_SALAD, 10))));
-        Discount christmasDay2 = new Christmas(new Orders(20,
-                List.of(new Order(CAESAR_SALAD, 10))));
-        Discount christmasDay3 = new Christmas(new Orders(25,
-                List.of(new Order(CAESAR_SALAD, 10))));
-        Discount christmasDay4 = new Christmas(new Orders(26,
-                List.of(new Order(CAESAR_SALAD, 10))));
+        Discount christmasDay1 = new Christmas(new Orders(
+                List.of(new Order(CAESAR_SALAD, 10)), 1));
+        Discount christmasDay2 = new Christmas(new Orders(
+                List.of(new Order(CAESAR_SALAD, 10)), 20));
+        Discount christmasDay3 = new Christmas(new Orders(
+                List.of(new Order(CAESAR_SALAD, 10)), 25));
+        Discount christmasDay4 = new Christmas(new Orders(
+                List.of(new Order(CAESAR_SALAD, 10)), 26));
         
         //then
         assertEquals(1000, christmasDay1.discountAmount());

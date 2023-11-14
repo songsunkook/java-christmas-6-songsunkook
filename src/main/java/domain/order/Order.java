@@ -14,7 +14,7 @@ public class Order {
     }
     
     public MenuType getMenuType() {
-        return menu.getType();
+        return menu.getMenuType();
     }
     
     public int getOrderPrice() {

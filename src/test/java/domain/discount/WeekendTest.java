@@ -13,23 +13,23 @@ class WeekendTest {
     @Test
     public void 주말_할인이_정상적으로_적용되는가() {
         //given
-        Discount notWeekend = new Weekend(new Orders(3, List.of(
+        Discount notWeekend = new Weekend(new Orders(List.of(
                 new Order(CAESAR_SALAD, 10),
                 new Order(CHRISTMAS_PASTA, 10),
                 new Order(ICE_CREAM, 10),
                 new Order(RED_WINE, 10)
-        )));
-        Discount weekend1 = new Weekend(new Orders(1, List.of(
+        ), 3));
+        Discount weekend1 = new Weekend(new Orders(List.of(
                 new Order(CAESAR_SALAD, 1),
                 new Order(ICE_CREAM, 1),
                 new Order(RED_WINE, 1)
-        )));
-        Discount weekend2 = new Weekend(new Orders(1, List.of(
+        ), 1));
+        Discount weekend2 = new Weekend(new Orders(List.of(
                 new Order(CAESAR_SALAD, 1),
                 new Order(CHRISTMAS_PASTA, 3),
                 new Order(ICE_CREAM, 1),
                 new Order(RED_WINE, 1)
-        )));
+        ), 1));
         
         //then
         assertEquals(0, notWeekend.discountAmount());

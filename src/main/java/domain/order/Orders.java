@@ -3,14 +3,15 @@ package domain.order;
 import constant.DayOfTheWeek;
 import constant.menu.MenuType;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Orders {
     private final List<Order> orders;
     private final int date;
     
-    public Orders(int date, List<Order> orders) {
-        this.date = date;
+    public Orders(List<Order> orders, int date) {
         this.orders = orders;
+        this.date = date;
     }
     
     public int getDate() {
@@ -54,5 +55,9 @@ public class Orders {
         return orders.stream()
                 .mapToInt(Order::getOrderPrice)
                 .sum();
+    }
+    
+    public List<Order> getOrders() {
+        return orders.stream().collect(Collectors.toUnmodifiableList());
     }
 }

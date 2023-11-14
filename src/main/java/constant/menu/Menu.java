@@ -37,11 +37,15 @@ public enum Menu {
         throw new IllegalArgumentException("[ERROR]존재하지 않는 메뉴");
     }
     
-    public int getPrice() {
-        return price;
+    public MenuType getMenuType() {
+        return menuType;
     }
     
-    public MenuType getType() {
-        return menuType;
+    public String getName() {
+        return name;
+    }
+    
+    public int getPrice() {
+        return price;
     }
 }
