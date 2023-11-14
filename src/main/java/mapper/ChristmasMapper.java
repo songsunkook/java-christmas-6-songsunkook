@@ -27,7 +27,9 @@ public class ChristmasMapper {
     }
     
     public List<OrderDto> getOrders() {
-        return christmasService.getOrders();
+        return christmasService.getOrders().stream()
+                .map(this::orderToOrderDto)
+                .toList();
     }
     
     public int getOrderAmountBeforeDiscount() {
@@ -51,7 +53,11 @@ public class ChristmasMapper {
     }
     
     private Order orderDtoToOrder(OrderDto orderDto) {
-        return null;
+        return new Order(orderDto.getMenu(), orderDto.getCount());
+    }
+    
+    private OrderDto orderToOrderDto(Order order) {
+        return new OrderDto(order.getMenu(), order.getCount());
     }
     
     public Badge getEventBadge() {

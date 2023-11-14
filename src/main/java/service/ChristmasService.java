@@ -2,11 +2,13 @@ package service;
 
 import constant.Badge;
 import domain.order.Order;
+import domain.order.Orders;
 import java.util.List;
 import mapper.dto.BenefitDto;
 import view.dto.OrderDto;
 
 public class ChristmasService {
+    private Orders orders;
     private int date;
     private int principal;
     
@@ -15,15 +17,15 @@ public class ChristmasService {
     }
     
     public void setOrders(List<Order> order) {
-    
+        orders = new Orders(order, date);
     }
     
     public int getDate() {
         return date;
     }
     
-    public List<OrderDto> getOrders() {
-        return null;
+    public List<Order> getOrders() {
+        return orders.getOrders();
     }
     
     public int getPrincipal() {

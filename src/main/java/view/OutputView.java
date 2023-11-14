@@ -27,6 +27,7 @@ public class OutputView {
     
     public void orderMenu(List<OrderDto> orderDtos) {
         System.out.print(ORDER_MENU_HEADER.get());
+        orderDtos.stream().forEach(System.out::println);
     }
     
     public void totalOrderAmountBeforeDiscount(int principal) {
