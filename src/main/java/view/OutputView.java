@@ -3,11 +3,14 @@ package view;
 import static constant.message.OutputMessage.*;
 
 import constant.Badge;
+import java.text.DecimalFormat;
 import java.util.List;
 import mapper.dto.BenefitDto;
 import view.dto.OrderDto;
 
 public class OutputView {
+    private static final DecimalFormat formatter = new DecimalFormat("###,###");
+    public static final String KRW = "원";
     
     public void startEventPlanner() {
         System.out.print(START_EVENT_PLANNER.get());
@@ -32,6 +35,7 @@ public class OutputView {
     
     public void totalOrderAmountBeforeDiscount(int principal) {
         System.out.print(TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT_HEADER.get());
+        System.out.println(formatter.format(principal) + KRW);
     }
     
     public void giveawayMenu(OrderDto giveaway) {

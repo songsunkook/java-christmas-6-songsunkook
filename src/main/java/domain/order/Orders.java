@@ -60,4 +60,10 @@ public class Orders {
     public List<Order> getOrders() {
         return orders.stream().collect(Collectors.toUnmodifiableList());
     }
+    
+    public int getTotalPrice() {
+        return orders.stream()
+                .mapToInt(Order::getOrderPrice)
+                .sum();
+    }
 }

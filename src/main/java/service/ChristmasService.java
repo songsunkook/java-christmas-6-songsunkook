@@ -10,7 +10,6 @@ import view.dto.OrderDto;
 public class ChristmasService {
     private Orders orders;
     private int date;
-    private int principal;
     
     public void setVisitDate(int date) {
         this.date = date;
@@ -29,7 +28,7 @@ public class ChristmasService {
     }
     
     public int getPrincipal() {
-        return principal;
+        return orders.getTotalPrice();
     }
     
     public OrderDto getGiveaway() {
