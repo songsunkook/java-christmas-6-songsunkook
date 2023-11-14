@@ -24,9 +24,9 @@ public class ChristmasController {
     
     public void inputOrder() {
         outputView.inputDateOfVisit();
-        christmasMapper.setVisitDate(inputView.visitDate());
+        christmasMapper.setVisitDate(inputView.readDate());
         outputView.inputMenuInformation();
-        christmasMapper.setOrders(inputView.orderMenus());
+        christmasMapper.setOrders(inputView.readMenus());
     }
     
     public void outputResult() {
