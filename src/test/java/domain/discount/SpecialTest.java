@@ -2,7 +2,7 @@ package domain.discount;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import constant.menu.Appetizer;
+import constant.menu.Menu;
 import domain.order.Order;
 import domain.order.OrderInformation;
 import java.util.List;
@@ -14,10 +14,10 @@ class SpecialTest {
     public void 특별_할인이_정상적으로_적용되는가() {
         //given
         Discount notStarDay = new Special(new OrderInformation(4, List.of(
-                new Order(Appetizer.CAESAR_SALAD, 10)
+                new Order(Menu.CAESAR_SALAD, 10)
         )));
         Discount starDay = new Special(new OrderInformation(3, List.of(
-                new Order(Appetizer.CAESAR_SALAD, 10)
+                new Order(Menu.CAESAR_SALAD, 10)
         )));
         
         //then

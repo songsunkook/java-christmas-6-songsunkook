@@ -2,7 +2,7 @@ package domain.giveaway;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import constant.menu.Drink;
+import constant.menu.Menu;
 import org.junit.jupiter.api.Test;
 
 class GiveawayTest {
@@ -31,7 +31,7 @@ class GiveawayTest {
         Giveaway giveaway2 = new Giveaway(200000);
         
         //then
-        assertEquals(Drink.CHAMPAGNE, giveaway1.getGivewayPrize());
-        assertEquals(Drink.CHAMPAGNE, giveaway2.getGivewayPrize());
+        assertEquals(Menu.CHAMPAGNE, giveaway1.getGivewayPrize());
+        assertEquals(Menu.CHAMPAGNE, giveaway2.getGivewayPrize());
     }
 }

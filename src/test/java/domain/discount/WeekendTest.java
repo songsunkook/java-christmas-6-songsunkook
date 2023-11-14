@@ -1,11 +1,9 @@
 package domain.discount;
 
+import static constant.menu.Menu.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import constant.menu.Appetizer;
-import constant.menu.Dessert;
-import constant.menu.Drink;
-import constant.menu.Main;
+import constant.menu.Menu;
 import domain.order.Order;
 import domain.order.OrderInformation;
 import java.util.List;
@@ -17,21 +15,21 @@ class WeekendTest {
     public void 주말_할인이_정상적으로_적용되는가() {
         //given
         Discount notWeekend = new Weekend(new OrderInformation(3, List.of(
-                new Order(Appetizer.CAESAR_SALAD, 10),
-                new Order(Main.CHRISTMAS_PASTA, 10),
-                new Order(Dessert.ICE_CREAM, 10),
-                new Order(Drink.RED_WINE, 10)
+                new Order(CAESAR_SALAD, 10),
+                new Order(CHRISTMAS_PASTA, 10),
+                new Order(ICE_CREAM, 10),
+                new Order(RED_WINE, 10)
         )));
         Discount weekend1 = new Weekend(new OrderInformation(1, List.of(
-                new Order(Appetizer.CAESAR_SALAD, 1),
-                new Order(Dessert.ICE_CREAM, 1),
-                new Order(Drink.RED_WINE, 1)
+                new Order(CAESAR_SALAD, 1),
+                new Order(ICE_CREAM, 1),
+                new Order(RED_WINE, 1)
         )));
         Discount weekend2 = new Weekend(new OrderInformation(1, List.of(
-                new Order(Appetizer.CAESAR_SALAD, 1),
-                new Order(Main.CHRISTMAS_PASTA, 3),
-                new Order(Dessert.ICE_CREAM, 1),
-                new Order(Drink.RED_WINE, 1)
+                new Order(CAESAR_SALAD, 1),
+                new Order(CHRISTMAS_PASTA, 3),
+                new Order(ICE_CREAM, 1),
+                new Order(RED_WINE, 1)
         )));
         
         //then
