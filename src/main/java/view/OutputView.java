@@ -69,6 +69,7 @@ public class OutputView {
     
     public void amountAfterDiscount(int amountAfterDiscount) {
         System.out.print(AMOUNT_AFTER_DISCOUNT_HEADER.get());
+        System.out.println(formatter.format(amountAfterDiscount) + KRW);
     }
     
     public void eventBadge(Badge eventBadge) {

@@ -56,19 +56,24 @@ public class ChristmasService {
     }
     
     public int getTotalBenefitAmount() {
-        int totalBenefitAmount = Arrays.stream(Discounts.values())
-                .map(discount -> discount.getFunction().apply(orders))
-                .filter(Discount::isDiscountable)
-                .mapToInt(Discount::discountAmount)
-                .sum();
+        int totalBenefitAmount = getTotalDiscountAmount();
         if (giveaway.isHave()) {
             totalBenefitAmount += giveaway.getGivewayPrize().getPrice() * giveaway.getCount();
         }
         return totalBenefitAmount;
     }
     
+    private int getTotalDiscountAmount() {
+        return Arrays.stream(Discounts.values())
+                .map(discount -> discount.getFunction().apply(orders))
+                .filter(Discount::isDiscountable)
+                .mapToInt(Discount::discountAmount)
+                .sum();
+    }
+    
     public int getAmountAfterDiscount() {
-        return 0;
+        int totalDiscountAmount = getTotalDiscountAmount();
+        return getPrincipal() - totalDiscountAmount;
     }
     
     public Badge getEventBadge() {
