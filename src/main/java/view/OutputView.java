@@ -5,13 +5,15 @@ import static constant.message.OutputMessage.*;
 import constant.Badge;
 import java.text.DecimalFormat;
 import java.util.List;
-import mapper.dto.BenefitDto;
+import mapper.dto.DiscountDto;
 import view.dto.OrderDto;
 
 public class OutputView {
+    
     private static final DecimalFormat formatter = new DecimalFormat("###,###");
     private static final String KRW = "원";
     private static final String NONE = "없음";
+    private static final String NAME_SEPARATOR = ": ";
     
     public void startEventPlanner() {
         System.out.print(START_EVENT_PLANNER.get());
@@ -48,8 +50,16 @@ public class OutputView {
         System.out.println(giveaway);
     }
     
-    public void benefitDetails(BenefitDto benefitDto) {
+    public void benefitDetails(List<DiscountDto> discountDtos) {
         System.out.print(BENEFIT_DETAILS_HEADER.get());
+        for (var discountDto : discountDtos) {
+            System.out.println(
+                    discountDto.getName() +
+                            NAME_SEPARATOR +
+                            "-" +
+                            formatter.format(discountDto.getBenefitAmount()) + KRW
+            );
+        }
     }
     
     public void totalBenefitAmount(int totalBenefitAmount) {

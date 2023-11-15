@@ -1,5 +1,6 @@
 package domain.discount;
 
+import constant.Discounts;
 import domain.order.Orders;
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class Special extends Discount {
     }
     
     @Override
-    protected int discountAmount() {
+    public int discountAmount() {
         if (isDiscountable()) {
             return 1000;
         }
@@ -19,10 +20,15 @@ public class Special extends Discount {
     }
     
     @Override
-    protected boolean isDiscountable() {
+    public boolean isDiscountable() {
         if (STAR_DAY.contains(orders.getDate())) {
             return super.isDiscountable();
         }
         return false;
+    }
+    
+    @Override
+    public Discounts getType() {
+        return Discounts.SPECIAL;
     }
 }

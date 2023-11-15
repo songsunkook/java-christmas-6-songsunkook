@@ -1,14 +1,17 @@
 package mapper;
 
 import constant.Badge;
+import domain.discount.Discount;
 import domain.giveaway.Giveaway;
 import domain.order.Order;
+import java.util.ArrayList;
 import java.util.List;
-import mapper.dto.BenefitDto;
+import mapper.dto.DiscountDto;
 import service.ChristmasService;
 import view.dto.OrderDto;
 
 public class ChristmasMapper {
+    
     private final ChristmasService christmasService = new ChristmasService();
     
     public void setVisitDate(int date) {
@@ -38,18 +41,27 @@ public class ChristmasMapper {
     }
     
     public OrderDto getGiveaway() {
-        return giveawayToOrderDto(christmasService.getGiveaway());
+        return new OrderDto(christmasService.getGiveawayMenu(), christmasService.getGiveawayCount());
     }
     
-    private OrderDto giveawayToOrderDto(Giveaway giveaway) {
-        if (!giveaway.isHave()) {
-            return null;
+    public List<DiscountDto> getBenefitDetails() {
+        List<DiscountDto> discountDtos = new ArrayList<>(
+                christmasService.getBenefitDetails().stream()
+                        .map(this::discountToDiscountDto)
+                        .toList()
+        );
+        
+        if (christmasService.isHaveGiveaway()) {
+            discountDtos.add(new DiscountDto(
+                    christmasService.getGiveawayMenu().getName(),
+                    christmasService.getGiveawayMenu().getPrice() * christmasService.getGiveawayCount()
+            ));
         }
-        return new OrderDto(giveaway.getGivewayPrize(), giveaway.getCount());
+        return discountDtos;
     }
     
-    public BenefitDto getBenefitDetails() {
-        return christmasService.getBenefitDetails();
+    private DiscountDto discountToDiscountDto(Discount discount) {
+        return new DiscountDto(discount.getName(), discount.discountAmount());
     }
     
     public int getTotalBenefitAmount() {

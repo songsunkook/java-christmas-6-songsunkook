@@ -1,5 +1,6 @@
 package domain.discount;
 
+import constant.Discounts;
 import domain.order.Orders;
 
 public abstract class Discount {
@@ -9,9 +10,9 @@ public abstract class Discount {
         this.orders = orders;
     }
     
-    abstract int discountAmount();
+    public abstract int discountAmount();
     
-    protected boolean isDiscountable() {
+    public boolean isDiscountable() {
         if (orders.getOrderPrice() < 10_000) {
             return false;
         }
@@ -19,5 +20,11 @@ public abstract class Discount {
             return false;
         }
         return true;
+    }
+    
+    public abstract Discounts getType();
+    
+    public String getName() {
+        return getType().getName();
     }
 }

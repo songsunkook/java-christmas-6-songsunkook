@@ -1,5 +1,6 @@
 package domain.discount;
 
+import constant.Discounts;
 import domain.order.Orders;
 
 public class Christmas extends Discount {
@@ -8,7 +9,7 @@ public class Christmas extends Discount {
     private static final int MIN_DISCOUNT_AMOUNT = 1000;
     private static final int DISCOUNT_AMOUNT_PER_DAY = 100;
     
-    Christmas(Orders orders) {
+    public Christmas(Orders orders) {
         super(orders);
     }
     
@@ -21,10 +22,15 @@ public class Christmas extends Discount {
     }
     
     @Override
-    protected boolean isDiscountable() {
+    public boolean isDiscountable() {
         if (orders.getDate() <= CHRISTMAS_DATE) {
             return super.isDiscountable();
         }
         return false;
+    }
+    
+    @Override
+    public Discounts getType() {
+        return Discounts.CHRISTMAS;
     }
 }
