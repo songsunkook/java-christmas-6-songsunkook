@@ -3,6 +3,7 @@ package service;
 import constant.Badge;
 import constant.Discounts;
 import constant.menu.Menu;
+import domain.EventBadge;
 import domain.discount.Discount;
 import domain.giveaway.Giveaway;
 import domain.order.Order;
@@ -14,6 +15,7 @@ public class ChristmasService {
     private Giveaway giveaway;
     private Orders orders;
     private int date;
+    private EventBadge eventBadge;
     
     public void setVisitDate(int date) {
         this.date = date;
@@ -77,6 +79,7 @@ public class ChristmasService {
     }
     
     public Badge getEventBadge() {
-        return null;
+        eventBadge = new EventBadge(getTotalBenefitAmount());
+        return eventBadge.getBadge();
     }
 }

@@ -74,5 +74,6 @@ public class OutputView {
     
     public void eventBadge(Badge eventBadge) {
         System.out.print(EVENT_BADGE_HEADER.get());
+        System.out.println(eventBadge.getName());
     }
 }

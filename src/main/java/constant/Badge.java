@@ -1,15 +1,17 @@
 package constant;
 
 public enum Badge {
-    NONE(0),
-    STAR(5_000),
-    TREE(10_000),
-    SANTA(20_000),
+    NONE("없음", 0),
+    STAR("별", 5_000),
+    TREE("트리", 10_000),
+    SANTA("산타", 20_000),
     ;
     
+    private final String name;
     private final int discountAmount;
     
-    Badge(int discountAmount) {
+    Badge(String name, int discountAmount) {
+        this.name = name;
         this.discountAmount = discountAmount;
     }
     
@@ -20,6 +22,10 @@ public enum Badge {
             }
         }
         throw new RuntimeException("[ERROR]불가능한 할인 금액 전달");
+    }
+    
+    public String getName() {
+        return name;
     }
     
     public int getRequiredDiscountAmount() {
