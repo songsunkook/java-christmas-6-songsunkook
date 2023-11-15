@@ -1,10 +1,16 @@
 package controller;
 
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import mapper.ChristmasMapper;
 import view.InputView;
 import view.OutputView;
+import view.dto.OrderDto;
 
 public class ChristmasController {
+    
     private final InputView inputView;
     private final OutputView outputView;
     private final ChristmasMapper christmasMapper;
@@ -24,9 +30,9 @@ public class ChristmasController {
     
     public void inputOrder() {
         outputView.inputDateOfVisit();
-        christmasMapper.setVisitDate(inputView.readDate());
+        repeat(christmasMapper::setVisitDate, inputView::readDate);
         outputView.inputMenuInformation();
-        christmasMapper.setOrders(inputView.readMenus());
+        repeat(christmasMapper::setOrders, inputView::readMenus);
     }
     
     public void outputResult() {
@@ -70,5 +76,14 @@ public class ChristmasController {
     
     private void outputEventBadge() {
         outputView.eventBadge(christmasMapper.getEventBadge());
+    }
+    
+    private <T> void repeat(Consumer<T> consumer, Supplier<T> parameterSupplier) {
+        try {
+            consumer.accept(parameterSupplier.get());
+        } catch (IllegalArgumentException e) {
+            outputView.exceptionMessage(e.getMessage());
+            repeat(consumer, parameterSupplier);
+        }
     }
 }

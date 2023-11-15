@@ -16,6 +16,10 @@ public class OrderDto {
         this.count = count;
     }
     
+    public String getMenuName() {
+        return menu.getName();
+    }
+    
     public Menu getMenu() {
         return menu;
     }

@@ -8,7 +8,7 @@ public enum OutputMessage {
     ORDER_MENU_HEADER("\n<주문 메뉴>\n"),
     TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT_HEADER("\n<할인 전 총주문 금액>\n"),
     GIVEAWAY_MENU_HEADER("\n<증정 메뉴>\n"),
-    BENEFIT_DETAILS_HEADER("\n<혜택 내역>\n"),
+    BENEFIT_DETAILS_HEADER("\n<혜택 내역>"),
     TOTAL_BENEFIT_AMOUNT_HEADER("\n<총혜택 금액>\n"),
     AMOUNT_AFTER_DISCOUNT_HEADER("\n<할인 후 예상 결제 금액>\n"),
     EVENT_BADGE_HEADER("\n<%d월 이벤트 배지>\n"),

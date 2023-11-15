@@ -2,6 +2,7 @@ package view;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import constant.message.ExceptionMessage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,42 +15,49 @@ public class InputView {
     private static final String SEPARATOR_BETWEEN_MENU_NAME_AND_NUMBER = "-";
     
     public int readDate() {
-        return this.catchDateException(this::inputDate);
+        return parseDate(readLine());
     }
     
-    private int inputDate() {
-        return Integer.parseInt(readLine());
-    }
-    
-    private int catchDateException(Supplier<Integer> logic) {
+    private int parseDate(String string) {
         try {
-            return logic.get();
+            int date = Integer.parseInt(string);
+            if (date < 1 || date > 31) {
+                throw new IllegalArgumentException();
+            }
+            return date;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR]숫자가 아닌 입력");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_DATE.get());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_DATE.get());
         }
     }
     
     public List<OrderDto> readMenus() {
-        return catchOrderDtosExceptions(this::inputMenus);
-    }
-    
-    private List<OrderDto> inputMenus() {
-        List<OrderDto> result = new ArrayList<>();
-        String[] line = readLine().split(MENU_DELIMITER);
-        for (String menu : line) {
-            String[] menuElements = menu.split(SEPARATOR_BETWEEN_MENU_NAME_AND_NUMBER);
-            result.add(new OrderDto(menuElements[0], Integer.parseInt(menuElements[1])));
-        }
-        return result;
-    }
-    
-    private List<OrderDto> catchOrderDtosExceptions(Supplier<List<OrderDto>> logic) {
         try {
-            return logic.get();
+            List<OrderDto> result = new ArrayList<>();
+            String[] line = readLine().split(MENU_DELIMITER);
+            for (String menu : line) {
+                String[] menuElements = menu.split(SEPARATOR_BETWEEN_MENU_NAME_AND_NUMBER);
+                result.add(new OrderDto(menuElements[0], parseMenu(menuElements[1])));
+            }
+            return result;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            //-로 구분되어 개수가 명시되지 않은 경우 menuElements[1]을 인식받지 못할 수 있다.
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.get());
+        }
+    }
+    
+    private int parseMenu(String string) {
+        try {
+            int menu = Integer.parseInt(string);
+            if (menu < 1) {
+                throw new IllegalArgumentException();
+            }
+            return menu;
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR]숫자가 아닌 입력");
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.get());
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException(e.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.get());
         }
     }
 }

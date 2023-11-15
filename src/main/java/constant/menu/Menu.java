@@ -1,5 +1,7 @@
 package constant.menu;
 
+import constant.message.ExceptionMessage;
+
 public enum Menu {
     BUTTON_MUSHROOM_SOUP(MenuType.APPETIZER, "양송이수프", 6_000),
     TAPAS(MenuType.APPETIZER, "타파스", 5_500),
@@ -34,7 +36,7 @@ public enum Menu {
                 return menu;
             }
         }
-        throw new IllegalArgumentException("[ERROR]존재하지 않는 메뉴");
+        throw new IllegalArgumentException(ExceptionMessage.INVALID_ORDER.get());
     }
     
     public MenuType getMenuType() {

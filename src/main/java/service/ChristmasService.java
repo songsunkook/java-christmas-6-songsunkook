@@ -3,6 +3,7 @@ package service;
 import constant.Badge;
 import constant.Discounts;
 import constant.menu.Menu;
+import constant.message.ExceptionMessage;
 import domain.EventBadge;
 import domain.discount.Discount;
 import domain.giveaway.Giveaway;

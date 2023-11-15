@@ -14,10 +14,10 @@ class WeekendTest {
     public void 주말_할인이_정상적으로_적용되는가() {
         //given
         Discount notWeekend = new Weekend(new Orders(List.of(
-                new Order(CAESAR_SALAD, 10),
+                new Order(CAESAR_SALAD, 1),
                 new Order(CHRISTMAS_PASTA, 10),
-                new Order(ICE_CREAM, 10),
-                new Order(RED_WINE, 10)
+                new Order(ICE_CREAM, 1),
+                new Order(RED_WINE, 1)
         ), 3));
         Discount weekend1 = new Weekend(new Orders(List.of(
                 new Order(CAESAR_SALAD, 1),

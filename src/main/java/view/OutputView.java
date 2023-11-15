@@ -14,6 +14,7 @@ public class OutputView {
     private static final String KRW = "원";
     private static final String NONE = "없음";
     private static final String NAME_SEPARATOR = ": ";
+    private static final String LINE_SEPARATOR = System.lineSeparator();
     
     public void startEventPlanner() {
         System.out.print(START_EVENT_PLANNER.get());
@@ -33,29 +34,37 @@ public class OutputView {
     
     public void orderMenu(List<OrderDto> orderDtos) {
         System.out.print(ORDER_MENU_HEADER.get());
-        orderDtos.stream().forEach(System.out::println);
+        orderDtos.stream().forEach(orderDto -> optionalPrintln(orderDto, false));
     }
     
     public void totalOrderAmountBeforeDiscount(int principal) {
         System.out.print(TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT_HEADER.get());
-        System.out.println(formatter.format(principal) + KRW);
+        System.out.print(formatter.format(principal) + KRW + LINE_SEPARATOR);
     }
     
     public void giveawayMenu(OrderDto giveaway) {
         System.out.print(GIVEAWAY_MENU_HEADER.get());
-        optionalPrint(giveaway, giveaway.getCount() == 0);
+        optionalPrintln(giveaway, giveaway.getCount() == 0);
     }
     
     private void optionalPrint(Object object, boolean isNull) {
         if (isNull) {
-            System.out.println(NONE);
+            System.out.print(NONE + LINE_SEPARATOR);
             return;
         }
-        System.out.println(object);
+        System.out.print(object);
+    }
+    
+    private void optionalPrintln(Object object, boolean isNull) {
+        if (isNull) {
+            System.out.print(NONE + LINE_SEPARATOR);
+            return;
+        }
+        System.out.print(object + LINE_SEPARATOR);
     }
     
     public void benefitDetails(List<DiscountDto> discountDtos) {
-        System.out.print(BENEFIT_DETAILS_HEADER.get());
+        optionalPrintln(BENEFIT_DETAILS_HEADER.get(),false);
         String message = generateBenefitDetailsMessage(discountDtos);
         optionalPrint(message, message.equals(""));
     }
@@ -67,7 +76,7 @@ public class OutputView {
                     discountDto.getName() +
                             NAME_SEPARATOR +
                             "-" +
-                            formatter.format(discountDto.getBenefitAmount()) + KRW
+                            formatter.format(discountDto.getBenefitAmount()) + KRW + "\n"
             );
         }
         return message.toString();
@@ -89,6 +98,10 @@ public class OutputView {
     
     public void eventBadge(Badge badge) {
         System.out.print(EVENT_BADGE_HEADER.get());
-        optionalPrint(badge.getName(), badge.equals(Badge.NONE));
+        optionalPrintln(badge.getName(), badge.equals(Badge.NONE));
+    }
+    
+    public void exceptionMessage(String message) {
+        System.out.println(message);
     }
 }
