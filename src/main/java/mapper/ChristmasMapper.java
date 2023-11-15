@@ -1,6 +1,7 @@
 package mapper;
 
 import constant.Badge;
+import constant.message.OutputMessage;
 import domain.discount.Discount;
 import domain.giveaway.Giveaway;
 import domain.order.Order;
@@ -53,7 +54,7 @@ public class ChristmasMapper {
         
         if (christmasService.isHaveGiveaway()) {
             discountDtos.add(new DiscountDto(
-                    christmasService.getGiveawayMenu().getName(),
+                    OutputMessage.GIVEAWAY_EVENT.get(),
                     christmasService.getGiveawayMenu().getPrice() * christmasService.getGiveawayCount()
             ));
         }
