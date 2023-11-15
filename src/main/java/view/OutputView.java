@@ -10,61 +10,49 @@ import view.dto.OrderDto;
 
 public class OutputView {
     
-    private static final DecimalFormat formatter = new DecimalFormat("###,###");
     private static final String KRW = "원";
     private static final String NONE = "없음";
     private static final String NAME_SEPARATOR = ": ";
     private static final String LINE_SEPARATOR = System.lineSeparator();
+    private static final DecimalFormat formatter = new DecimalFormat("###,###");
     
     public void startEventPlanner() {
-        System.out.print(START_EVENT_PLANNER.get());
+        println(START_EVENT_PLANNER.get());
     }
     
     public void inputDateOfVisit() {
-        System.out.print(INPUT_DATE_OF_VISIT.get());
+        println(INPUT_DATE_OF_VISIT.get());
     }
     
     public void inputMenuInformation() {
-        System.out.print(INPUT_MENU_INFORMATION.get());
+        println(INPUT_MENU_INFORMATION.get());
     }
     
     public void previewEventBenefits(int date) {
-        System.out.print(PREVIEW_EVENT_BENEFITS.get(date));
+        println(PREVIEW_EVENT_BENEFITS.get(date));
     }
     
     public void orderMenu(List<OrderDto> orderDtos) {
-        System.out.print(ORDER_MENU_HEADER.get());
+        println();
+        println(ORDER_MENU_HEADER.get());
         orderDtos.stream().forEach(orderDto -> optionalPrintln(orderDto, false));
     }
     
     public void totalOrderAmountBeforeDiscount(int principal) {
-        System.out.print(TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT_HEADER.get());
-        System.out.print(formatter.format(principal) + KRW + LINE_SEPARATOR);
+        println();
+        println(TOTAL_ORDER_AMOUNT_BEFORE_DISCOUNT_HEADER.get());
+        println(formatter.format(principal) + KRW);
     }
     
     public void giveawayMenu(OrderDto giveaway) {
-        System.out.print(GIVEAWAY_MENU_HEADER.get());
+        println();
+        println(GIVEAWAY_MENU_HEADER.get());
         optionalPrintln(giveaway, giveaway.getCount() == 0);
     }
     
-    private void optionalPrint(Object object, boolean isNull) {
-        if (isNull) {
-            System.out.print(NONE + LINE_SEPARATOR);
-            return;
-        }
-        System.out.print(object);
-    }
-    
-    private void optionalPrintln(Object object, boolean isNull) {
-        if (isNull) {
-            System.out.print(NONE + LINE_SEPARATOR);
-            return;
-        }
-        System.out.print(object + LINE_SEPARATOR);
-    }
-    
     public void benefitDetails(List<DiscountDto> discountDtos) {
-        optionalPrintln(BENEFIT_DETAILS_HEADER.get(),false);
+        println();
+        println(BENEFIT_DETAILS_HEADER.get());
         String message = generateBenefitDetailsMessage(discountDtos);
         optionalPrint(message, message.equals(""));
     }
@@ -83,25 +71,55 @@ public class OutputView {
     }
     
     public void totalBenefitAmount(int totalBenefitAmount) {
-        System.out.print(TOTAL_BENEFIT_AMOUNT_HEADER.get());
+        println();
+        println(TOTAL_BENEFIT_AMOUNT_HEADER.get());
         if (totalBenefitAmount == 0) {
-            System.out.println(formatter.format(totalBenefitAmount) + KRW);
+            println(formatter.format(totalBenefitAmount) + KRW);
             return;
         }
-        System.out.println("-" + formatter.format(totalBenefitAmount) + KRW);
+        println("-" + formatter.format(totalBenefitAmount) + KRW);
     }
     
     public void amountAfterDiscount(int amountAfterDiscount) {
-        System.out.print(AMOUNT_AFTER_DISCOUNT_HEADER.get());
-        System.out.println(formatter.format(amountAfterDiscount) + KRW);
+        println();
+        println(AMOUNT_AFTER_DISCOUNT_HEADER.get());
+        println(formatter.format(amountAfterDiscount) + KRW);
     }
     
     public void eventBadge(Badge badge) {
-        System.out.print(EVENT_BADGE_HEADER.get());
+        println();
+        println(EVENT_BADGE_HEADER.get());
         optionalPrintln(badge.getName(), badge.equals(Badge.NONE));
     }
     
     public void exceptionMessage(String message) {
-        System.out.println(message);
+        println(message);
+    }
+    
+    private void print(Object object) {
+        System.out.print(object);
+    }
+    
+    private void println() {
+        System.out.print(LINE_SEPARATOR);
+    }
+    
+    private void println(Object object) {
+        System.out.print(object + LINE_SEPARATOR);
+    }
+    
+    private void optionalPrint(Object object, boolean isNull) {
+        if (isNull) {
+            println(NONE);
+            return;
+        }
+        print(object);
+    }
+    
+    private void optionalPrintln(Object object, boolean isNull) {
+        optionalPrint(object, isNull);
+        if (!isNull) {
+            println();
+        }
     }
 }
