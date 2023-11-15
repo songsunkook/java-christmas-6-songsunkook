@@ -90,3 +90,6 @@ presentation[증정 이벤트] --> giveABadge[배지 부여]
   - [x] 총 주문 금액이 10,000원 이상인 경우만 할인 적용
   - [x] 음료만 주문 불가
   - [x] 메뉴는 한 번에 최대 20개까지만 주문 가능
+
+## 우테코 프리코스 노션 정리 링크
+[Notion](https://educated-icebreaker-525.notion.site/b674823836674cca8d863b8b2b1f78db?pvs=4)
