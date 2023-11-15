@@ -64,6 +64,7 @@ public class OutputView {
     
     public void totalBenefitAmount(int totalBenefitAmount) {
         System.out.print(TOTAL_BENEFIT_AMOUNT_HEADER.get());
+        System.out.println("-" + formatter.format(totalBenefitAmount) + KRW);
     }
     
     public void amountAfterDiscount(int amountAfterDiscount) {

@@ -56,7 +56,15 @@ public class ChristmasService {
     }
     
     public int getTotalBenefitAmount() {
-        return 0;
+        int totalBenefitAmount = Arrays.stream(Discounts.values())
+                .map(discount -> discount.getFunction().apply(orders))
+                .filter(Discount::isDiscountable)
+                .mapToInt(Discount::discountAmount)
+                .sum();
+        if (giveaway.isHave()) {
+            totalBenefitAmount += giveaway.getGivewayPrize().getPrice() * giveaway.getCount();
+        }
+        return totalBenefitAmount;
     }
     
     public int getAmountAfterDiscount() {
