@@ -43,27 +43,42 @@ public class OutputView {
     
     public void giveawayMenu(OrderDto giveaway) {
         System.out.print(GIVEAWAY_MENU_HEADER.get());
-        if (giveaway == null) {
+        optionalPrint(giveaway, giveaway.getCount() == 0);
+    }
+    
+    private void optionalPrint(Object object, boolean isNull) {
+        if (isNull) {
             System.out.println(NONE);
             return;
         }
-        System.out.println(giveaway);
+        System.out.println(object);
     }
     
     public void benefitDetails(List<DiscountDto> discountDtos) {
         System.out.print(BENEFIT_DETAILS_HEADER.get());
+        String message = generateBenefitDetailsMessage(discountDtos);
+        optionalPrint(message, message.equals(""));
+    }
+    
+    private static String generateBenefitDetailsMessage(List<DiscountDto> discountDtos) {
+        StringBuilder message = new StringBuilder();
         for (var discountDto : discountDtos) {
-            System.out.println(
+            message.append(
                     discountDto.getName() +
                             NAME_SEPARATOR +
                             "-" +
                             formatter.format(discountDto.getBenefitAmount()) + KRW
             );
         }
+        return message.toString();
     }
     
     public void totalBenefitAmount(int totalBenefitAmount) {
         System.out.print(TOTAL_BENEFIT_AMOUNT_HEADER.get());
+        if (totalBenefitAmount == 0) {
+            System.out.println(formatter.format(totalBenefitAmount) + KRW);
+            return;
+        }
         System.out.println("-" + formatter.format(totalBenefitAmount) + KRW);
     }
     
@@ -72,8 +87,8 @@ public class OutputView {
         System.out.println(formatter.format(amountAfterDiscount) + KRW);
     }
     
-    public void eventBadge(Badge eventBadge) {
+    public void eventBadge(Badge badge) {
         System.out.print(EVENT_BADGE_HEADER.get());
-        System.out.println(eventBadge.getName());
+        optionalPrint(badge.getName(), badge.equals(Badge.NONE));
     }
 }
