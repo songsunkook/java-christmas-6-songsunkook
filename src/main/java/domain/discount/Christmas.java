@@ -6,7 +6,7 @@ import domain.order.Orders;
 public class Christmas extends Discount {
     
     private static final int CHRISTMAS_DATE = 25;
-    private static final int MIN_DISCOUNT_AMOUNT = 1000;
+    private static final int MIN_DISCOUNT_AMOUNT = 1_000;
     private static final int DISCOUNT_AMOUNT_PER_DAY = 100;
     
     public Christmas(Orders orders) {

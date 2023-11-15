@@ -4,6 +4,7 @@ import constant.Discounts;
 import domain.order.Orders;
 
 public abstract class Discount {
+    private static final int MINIMUM_ORDER_PRICE = 10_000;
     protected final Orders orders;
     
     Discount(Orders orders) {
@@ -13,7 +14,7 @@ public abstract class Discount {
     public abstract int discountAmount();
     
     public boolean isDiscountable() {
-        if (orders.getOrderPrice() < 10_000) {
+        if (orders.getOrderPrice() < MINIMUM_ORDER_PRICE) {
             return false;
         }
         if (orders.getDrinkMenuCount() == orders.getAllMenuCount()) {

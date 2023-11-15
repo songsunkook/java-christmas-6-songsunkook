@@ -20,7 +20,7 @@ public class Giveaway {
         return haveGiveaway;
     }
     
-    public Menu getGivewayPrize() {
+    public Menu getGiveawayPrize() {
         return GIVEAWAY_PRIZE;
     }
     

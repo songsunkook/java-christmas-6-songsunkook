@@ -1,10 +1,13 @@
 package constant;
 
+import constant.message.ExceptionMessage;
+import java.util.Arrays;
+
 public enum Badge {
-    NONE("없음", 0),
-    STAR("별", 5_000),
-    TREE("트리", 10_000),
     SANTA("산타", 20_000),
+    TREE("트리", 10_000),
+    STAR("별", 5_000),
+    NONE("없음", 0),
     ;
     
     private final String name;
@@ -16,12 +19,12 @@ public enum Badge {
     }
     
     public static Badge from(int discountAmount) {
-        for (int i = values().length - 1; i >= 0; i--) {
+        for (int i = 0; i < values().length; i++) {
             if (discountAmount >= values()[i].discountAmount) {
                 return values()[i];
             }
         }
-        throw new RuntimeException("[ERROR]불가능한 할인 금액 전달");
+        throw new IllegalStateException(ExceptionMessage.IMPOSSIBLE_DISCOUNT_AMOUNT.getCheckedExceptionMessage());
     }
     
     public String getName() {

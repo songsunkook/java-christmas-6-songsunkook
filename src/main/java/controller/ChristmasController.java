@@ -1,13 +1,10 @@
 package controller;
 
-import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Function;
 import java.util.function.Supplier;
 import mapper.ChristmasMapper;
 import view.InputView;
 import view.OutputView;
-import view.dto.OrderDto;
 
 public class ChristmasController {
     
@@ -46,7 +43,7 @@ public class ChristmasController {
         outputGiveawayMenu();
         outputBenefitDetails();
         outputTotalBenefitAmount();
-        outputAmountAfterDiscount();
+        outputTotalOrderAmountAfterDiscount();
         outputEventBadge();
     }
     
@@ -70,7 +67,7 @@ public class ChristmasController {
         outputView.totalBenefitAmount(christmasMapper.getTotalBenefitAmount());
     }
     
-    private void outputAmountAfterDiscount() {
+    private void outputTotalOrderAmountAfterDiscount() {
         outputView.amountAfterDiscount(christmasMapper.getAmountAfterDiscount());
     }
     

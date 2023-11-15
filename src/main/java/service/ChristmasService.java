@@ -3,7 +3,6 @@ package service;
 import constant.Badge;
 import constant.Discounts;
 import constant.menu.Menu;
-import constant.message.ExceptionMessage;
 import domain.EventBadge;
 import domain.discount.Discount;
 import domain.giveaway.Giveaway;
@@ -44,7 +43,7 @@ public class ChristmasService {
     }
     
     public Menu getGiveawayMenu() {
-        return giveaway.getGivewayPrize();
+        return giveaway.getGiveawayPrize();
     }
     
     public int getGiveawayCount() {
@@ -61,7 +60,7 @@ public class ChristmasService {
     public int getTotalBenefitAmount() {
         int totalBenefitAmount = getTotalDiscountAmount();
         if (giveaway.isHave()) {
-            totalBenefitAmount += giveaway.getGivewayPrize().getPrice() * giveaway.getCount();
+            totalBenefitAmount += giveaway.getGiveawayPrize().getPrice() * giveaway.getCount();
         }
         return totalBenefitAmount;
     }

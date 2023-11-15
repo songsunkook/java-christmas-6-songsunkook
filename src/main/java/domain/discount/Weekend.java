@@ -6,7 +6,7 @@ import domain.order.Orders;
 import java.util.List;
 
 public class Weekend extends Discount {
-    private static final int DISCOUNT_AMOUNT = 2023;
+    private static final int DISCOUNT_AMOUNT = 2_023;
     private static final List<DayOfTheWeek> VALID_DAY_OF_THE_WEEK =
             List.of(
                     DayOfTheWeek.FRIDAY,

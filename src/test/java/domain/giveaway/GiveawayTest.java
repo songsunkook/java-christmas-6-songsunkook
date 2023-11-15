@@ -31,7 +31,7 @@ class GiveawayTest {
         Giveaway giveaway2 = new Giveaway(200000);
         
         //then
-        assertEquals(Menu.CHAMPAGNE, giveaway1.getGivewayPrize());
-        assertEquals(Menu.CHAMPAGNE, giveaway2.getGivewayPrize());
+        assertEquals(Menu.CHAMPAGNE, giveaway1.getGiveawayPrize());
+        assertEquals(Menu.CHAMPAGNE, giveaway2.getGiveawayPrize());
     }
 }

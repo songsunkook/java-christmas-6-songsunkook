@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Special extends Discount {
     private static final List<Integer> STAR_DAY = List.of(3, 10, 17, 24, 25, 31);
+    private static final int DISCOUNT_PRICE = 1_000;
 
     public Special(Orders orders) {
         super(orders);
@@ -14,7 +15,7 @@ public class Special extends Discount {
     @Override
     public int discountAmount() {
         if (isDiscountable()) {
-            return 1000;
+            return DISCOUNT_PRICE;
         }
         return 0;
     }
