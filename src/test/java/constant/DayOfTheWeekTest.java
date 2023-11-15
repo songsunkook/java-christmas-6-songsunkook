@@ -9,9 +9,9 @@ class DayOfTheWeekTest {
     @Test
     public void 요일을_정상적으로_계산하는가() {
         //given
-        DayOfTheWeek friday = DayOfTheWeek.of(1);
-        DayOfTheWeek monday = DayOfTheWeek.of(11);
-        DayOfTheWeek sunday = DayOfTheWeek.of(17);
+        DayOfTheWeek friday = DayOfTheWeek.from(1);
+        DayOfTheWeek monday = DayOfTheWeek.from(11);
+        DayOfTheWeek sunday = DayOfTheWeek.from(17);
         
         //then
         assertEquals(DayOfTheWeek.FRIDAY, friday);

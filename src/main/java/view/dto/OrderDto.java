@@ -12,7 +12,7 @@ public class OrderDto {
     }
     
     public OrderDto(String name, int count) {
-        menu = Menu.of(name);
+        menu = Menu.from(name);
         this.count = count;
     }
     

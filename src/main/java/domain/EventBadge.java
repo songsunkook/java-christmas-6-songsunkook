@@ -6,7 +6,7 @@ public class EventBadge {
     private final Badge badge;
     
     public EventBadge(int discountAmount) {
-        badge = Badge.of(discountAmount);
+        badge = Badge.from(discountAmount);
     }
     
     public Badge getBadge() {

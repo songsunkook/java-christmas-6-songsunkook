@@ -5,7 +5,7 @@ public enum DayOfTheWeek {
     
     private static final int FIRST_MONDAY = 4;
     
-    public static DayOfTheWeek of(int day) {
+    public static DayOfTheWeek from(int day) {
         int numberOfWeek = values().length;
         return values()[(day + numberOfWeek - FIRST_MONDAY) % numberOfWeek];
     }

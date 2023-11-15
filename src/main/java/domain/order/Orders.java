@@ -5,7 +5,6 @@ import constant.menu.MenuType;
 import constant.message.ExceptionMessage;
 import java.util.List;
 import java.util.stream.Collectors;
-import view.dto.OrderDto;
 
 public class Orders {
     
@@ -65,7 +64,7 @@ public class Orders {
     }
     
     public DayOfTheWeek dayOfTheWeek() {
-        return DayOfTheWeek.of(date);
+        return DayOfTheWeek.from(date);
     }
     
     public int getAllMenuCount() {

@@ -30,7 +30,7 @@ public enum Menu {
         this.price = price;
     }
     
-    public static Menu of(String name) {
+    public static Menu from(String name) {
         for (Menu menu : values()) {
             if (menu.name.equals(name)) {
                 return menu;

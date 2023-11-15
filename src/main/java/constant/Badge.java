@@ -15,7 +15,7 @@ public enum Badge {
         this.discountAmount = discountAmount;
     }
     
-    public static Badge of(int discountAmount) {
+    public static Badge from(int discountAmount) {
         for (int i = values().length - 1; i >= 0; i--) {
             if (discountAmount >= values()[i].discountAmount) {
                 return values()[i];
